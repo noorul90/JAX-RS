@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.cch.provider&apos; to &apos;com.cch.provider.reader&apos;&#x0D;&#x0A;- Original project: &apos;JAXBCustomeContentHandler&apos;&#x0D;&#x0A;- Original element: &apos;JAXBCustomeContentHandler/src/com.cch.provider&apos;&#x0D;&#x0A;- Renamed element: &apos;JAXBCustomeContentHandler/src/com.cch.provider.reader&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.cch.provider&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.cch.provider" name="com.cch.provider.reader" qualified="false" references="true" stamp="1460490002793" textual="false" version="1.0"/>
+</session>

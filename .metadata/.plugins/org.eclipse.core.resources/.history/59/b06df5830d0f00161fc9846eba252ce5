@@ -1,0 +1,35 @@
+package com.cw.dto;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="status")
+public class Status {
+	private String awbNo;
+	private String type;
+	private String status;
+	
+	public String getAwbNo() {
+		return awbNo;
+	}
+	public void setAwbNo(String awbNo) {
+		this.awbNo = awbNo;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.jri.common.BankApplication&apos; to &apos;JaxRsInjectionApplication&apos;&#x0D;&#x0A;- Original project: &apos;JaxRsInjection-Resteasy&apos;&#x0D;&#x0A;- Original element: &apos;com.jri.common.BankApplication&apos;&#x0D;&#x0A;- Renamed element: &apos;com.jri.common.JaxRsInjectionApplication&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BankApplication&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.jri.common{BankApplication.java[BankApplication" matchStrategy="1" name="JaxRsInjectionApplication" qualified="false" references="true" similarDeclarations="false" stamp="1459109369855" textual="false" version="1.0"/>
+</session>

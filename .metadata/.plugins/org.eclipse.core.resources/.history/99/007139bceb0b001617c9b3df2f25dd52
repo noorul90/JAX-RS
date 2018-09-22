@@ -1,0 +1,7 @@
+package com.apw.common;
+
+import javax.ws.rs.core.Application;
+
+public class BSEExchangeApplication extends Application {
+
+}

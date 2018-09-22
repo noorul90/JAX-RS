@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 packages to &apos;JaxRsInjection-Resteasy/src&apos;&#x0D;&#x0A;- Original project: &apos;JaxRsInjection&apos;&#x0D;&#x0A;- Destination element: &apos;JaxRsInjection-Resteasy/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     JaxRsInjection/src/com.jri.common&#x0D;&#x0A;     JaxRsInjection/src/com.jri.resource" description="Copy packages" destination="=JaxRsInjection-Resteasy/src" element1="/src&lt;com.jri.common" element2="/src&lt;com.jri.resource" flags="589830" fragments="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1458848701933" version="1.0"/>
+</session>

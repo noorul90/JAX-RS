@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;JAXBMessageBodyWriter.java&apos; to &apos;ClientApi/src/com.ideaprovider.providers.writer&apos;&#x0D;&#x0A;- Original project: &apos;JAXBCustomeContentHandler&apos;&#x0D;&#x0A;- Destination element: &apos;ClientApi/src/com.ideaprovider.providers.writer&apos;&#x0D;&#x0A;- Original element: &apos;com.cch.provider.writer.JAXBMessageBodyWriter.java&apos;" description="Copy compilation unit" destination="=ClientApi/src&lt;com.ideaprovider.providers.writer" element1="/src&lt;com.cch.provider.writer{JAXBMessageBodyWriter.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1461531295847" units="1" version="1.0"/>
+</session>

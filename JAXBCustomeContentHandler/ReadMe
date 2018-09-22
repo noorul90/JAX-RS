@@ -1,0 +1,21 @@
+requested URI:
+http://localhost:8082/JAXBCustomeContentHandler/rest/idea/recharge
+
+content-type in Header sections:
+application/xml
+
+requested xml type in body/payload section
+<subscriber>
+  <mobile>996523</mobile>
+  <plan>199plan</plan>
+  <amount>299</amount>
+</subscriber>
+
+output :
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<reciept>
+  <recieptNo>dc56fc89-de1f-4994-be18-3babf950caca</recieptNo>
+  <mobile>996523</mobile>
+  <balance>299.0</balance>
+  <status>SUCCESS</status>
+</reciept>

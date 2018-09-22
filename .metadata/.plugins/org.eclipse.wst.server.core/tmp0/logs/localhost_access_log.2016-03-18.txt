@@ -1,0 +1,13 @@
+127.0.0.1 - - [18/Mar/2016:00:42:06 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:42:41 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:43:34 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:43:36 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:43:37 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:43:39 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+127.0.0.1 - - [18/Mar/2016:00:43:57 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:44:04 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 404 1011
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:44:57 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:50:00 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 404 1011
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:50:04 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 404 1011
+127.0.0.1 - - [18/Mar/2016:00:50:41 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [18/Mar/2016:00:50:46 +0530] "GET /JerseyCourierWeb/rest//courier?src=hyd&dest=pune&weight=6.0 HTTP/1.1" 200 5

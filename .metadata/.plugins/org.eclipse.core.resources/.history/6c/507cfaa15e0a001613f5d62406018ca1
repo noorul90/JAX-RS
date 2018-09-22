@@ -1,0 +1,5 @@
+package com.ideaprovider.providers.reader;
+
+public class JAXBMessageBodyReader {
+
+}

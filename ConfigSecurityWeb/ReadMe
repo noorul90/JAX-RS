@@ -1,0 +1,49 @@
+procedure to creating the user and there role in Jboss server
+==============================================================
+1. open the jboss_home directory
+2. open the bin directory
+3. double click on add-user.bat file to open
+4. enter b for Application User
+5. for realm don't write anything leave it blank it will take default automatically-->press enter
+6. type Username:raaj
+        password: welcome1
+        re-enter password: welcome1
+7. enter the role name as per your requirement: admin
+8. confirm the role(is this correct yes/no): yes
+9. at last press any key on keyboard to exit
+
+silorly we can create any number of user as per our business requirement to enable the security constraints
+
+NOTE: in this application we can create three user raaj,john and bob and their role is admin,trader and customer respectively
+      but in our web.xml file we can gave access of resource to raaj and bob only which role is admin and customer respectively but not for john which role is trader
+      but as per our business requirement we can gave access to resource to anyone
+
+requested uri:
+--------------
+http://localhost:8082/SecurityWeb/rest/stock/price/cipla
+ after pressing the enter it ask for username and passworrd to access the resource
+1st test
+--------
+ User: raaj
+ password: welcome1
+ output will be displayed successfully
+ 
+ 2nd test (open another browser)
+ -------------------------------
+ uri: http://localhost:8082/SecurityWeb/rest/stock/price/infy
+ User: john
+ password: welcome1
+ output will be denied as per our configuration
+ 
+ 3rd test (open another browser)
+ -------------------------------
+ uri: http://localhost:8082/SecurityWeb/rest/stock/price/indiabull
+ User: bob
+ password: welcome1
+ output will be displayed successfully
+ 
+ NOTE: for this application we can create 3 user which is raaj,john,bob and there role is admin,trader,customer respectively
+       we can enable authentication in web.xml file and give access of resource only to raaj(admin) and bob(customer) but not to john(trader)
+       so john does not have access permission to that resource
+ 
+ 

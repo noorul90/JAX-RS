@@ -1,0 +1,19 @@
+package com.ideaprovider.invoker;
+
+import javax.ws.rs.client.WebTarget;
+
+import com.capi.common.Invoker;
+import com.ideaprovider.dto.Reciept;
+import com.ideaprovider.dto.Subscriber;
+
+public class IdeaProviderInvoker extends Invoker{
+	private final String IDEA_PROVIDER_ROOT_URI="http://localhost:8082/JAXBCustomeContentHandler/rest/idea";
+	
+	public Reciept recharge(Subscriber subscriber){
+		WebTarget ideaTarget = null;
+		Reciept reciept = null;
+		
+		ideaTarget = client.target(IDEA_PROVIDER_ROOT_URI).path("recharge");
+	}
+
+}

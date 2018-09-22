@@ -1,0 +1,5 @@
+package com.ideaprovider.dto;
+
+public class Subscriber {
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;AutomaticParamConversion&apos; to &apos;AutomaticParamConversionWeb&apos;" description="Rename resource &apos;AutomaticParamConversion&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/AutomaticParamConversion" name="AutomaticParamConversionWeb" stamp="1459278347209" updateReferences="true"/>
+</session>

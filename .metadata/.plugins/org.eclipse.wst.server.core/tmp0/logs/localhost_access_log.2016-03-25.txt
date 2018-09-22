@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [25/Mar/2016:00:00:00 +0530] "GET /JaxRsInjection/rest/bank/1/balance/5/saving HTTP/1.1" 200 47
+0:0:0:0:0:0:0:1 - - [25/Mar/2016:00:03:04 +0530] "GET /JaxRsInjection/rest/bank/1/balance/5/saving HTTP/1.1" 200 47

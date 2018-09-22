@@ -1,0 +1,7 @@
+127.0.0.1 - - [20/Mar/2016:02:40:17 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [20/Mar/2016:02:42:16 +0530] "GET /WorkingWithInterface/resources/stockTrade?stockName=cipla&market=bse HTTP/1.1" 500 6908
+127.0.0.1 - - [20/Mar/2016:02:47:48 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [20/Mar/2016:02:47:56 +0530] "GET /WorkingWithInterface/resources/stockTrade?stockName=cipla&market=bse HTTP/1.1" 500 6908
+127.0.0.1 - - [20/Mar/2016:02:57:54 +0530] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [20/Mar/2016:02:58:25 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [20/Mar/2016:02:58:43 +0530] "GET /WorkingWithInterface/resources/stockTrade?stockName=cipla&market=bse HTTP/1.1" 200 6

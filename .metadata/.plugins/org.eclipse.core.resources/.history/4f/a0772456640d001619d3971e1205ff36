@@ -1,0 +1,29 @@
+package com.asyncprog.invoker;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+
+import com.capi.common.Invoker;
+
+public class BSEExchangeInvoker extends Invoker{
+	private final String BSE_EXCHANGE_ROOT_URI="http://localhost:8082/AsynchronousProgWeb/rest/bse";
+	
+	public void showStockPrice(String stockName) throws InterruptedException, ExecutionException{
+		WebTarget bseTarget = null;
+		Future<Response> future = null;
+		Response response = null;
+		
+		bseTarget = client.target(BSE_EXCHANGE_ROOT_URI).path("stock").path("{stockNm}").resolveTemplate("stockNm", stockName);
+		future = bseTarget.request().async().get();
+		while(future.isDone()==false){
+			
+		}
+		response = future.get();
+		System.out.println(response.readEntity(Float.class));
+		response.close();
+	}
+
+}

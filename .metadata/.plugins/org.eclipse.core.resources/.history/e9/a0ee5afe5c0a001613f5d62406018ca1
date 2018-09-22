@@ -1,0 +1,5 @@
+package com.ideaprovider.providers.contextresolver;
+
+public class JAXBContextResolver {
+
+}

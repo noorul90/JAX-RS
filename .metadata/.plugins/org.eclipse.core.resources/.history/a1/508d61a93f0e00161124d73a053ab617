@@ -1,0 +1,14 @@
+we have to add expires()/expires header as part of http 1.0 protocol
+
+but as part of http 1.1 expires()/expires header will be remove/deprecated and in place of
+expires header we use cacheControl()/cache control header
+
+as part of cacheControl header we can pass multiple value as part of response
+1.NoStore
+2.NoCache
+3.Private
+4.maxAge
+5.mustRevalidate
+6.NoTransform
+
+total 6 value we can pass

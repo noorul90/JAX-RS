@@ -1,0 +1,26 @@
+package com.cw.resource;
+
+import java.util.Calendar;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+@Path("/order")
+public class OrderResource {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/status/{orderId}")
+	public Response getOrderStatus(@PathParam("orderId") String orderID) {
+		Calendar cal = Calendar.getInstance();
+		int min = cal.get(Calendar.MINUTE);
+		cal.set(Calendar.MINUTE, min + 2);
+		
+		return Response.ok().entity("In-Progress").expires(cal.getTime())
+				.build();
+	}
+
+}

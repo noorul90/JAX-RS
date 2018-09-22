@@ -1,0 +1,417 @@
+									Content Handlers
+									----------------
+
+								For Request
+								------------
+
+1>InputStream
+--------------
+
+@Path("/order")
+public class OrderResource {
+	
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/new/in")
+	public StreamingOutput newOrder(InputStream is) throws IOException
+	{
+		StringBuffer buffer=null;
+		DataWriter dataWriter=null;
+		int c=-1;
+		
+		buffer=new StringBuffer();
+		while((c=is.read())!=-1)
+		{
+			buffer.append((char)c);
+		}
+		
+		dataWriter=new DataWriter(buffer.toString());
+		return dataWriter;
+	}
+	
+	private final class DataWriter implements StreamingOutput
+	{
+		private String data;		
+
+		public DataWriter(String data) {
+			this.data=data;
+		}
+
+		@Override
+		public void write(OutputStream os) throws IOException, WebApplicationException {
+			
+			os.write(data.getBytes());
+			os.close();
+		}
+		
+	}
+}
+
+
+url:
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/in
+
+choose POST type request
+
+write the following in form header
+
+Content-Type text/plain
+
+write the following in form body
+
+Order-Product-Apple
+
+then click on send.
+
+output
+-----
+Order-Product-Apple
+
+2>Reader
+---------
+@Path("/order")
+public class OrderResource {
+	
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/new/reader")
+	public StreamingOutput newOrder(Reader reader) throws IOException
+	{
+		StringBuffer buffer=null;
+		char[] buf=null;
+		DataWriter writer=null;
+		
+		buf=new char[256];
+		buffer=new StringBuffer();
+		while((reader.read(buf))!=-1)
+		{
+			buffer.append(buf);
+		}
+		
+		writer=new DataWriter(buffer.toString());
+		return writer; 
+				
+	}
+	
+	private final class DataWriter implements StreamingOutput
+	{
+		private String data;		
+
+		public DataWriter(String data) {
+			this.data=data;
+		}
+
+		@Override
+		public void write(OutputStream os) throws IOException, WebApplicationException {
+			
+			os.write(data.getBytes());
+			os.close();
+		}
+		
+	}
+}
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/reader
+
+
+choose POST type request
+
+write the following in form header
+
+Content-Type text/plain
+
+write the following in form body
+
+Order-Product-Orange
+
+then click on send.
+ 
+output
+-----
+Order-Product-Orange
+
+3>byte[] raw
+-------------
+@Path("/order")
+public class OrderResource {
+	
+	@POST
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Path("/new/byte")
+	public StreamingOutput newOrder(byte[] raw)
+	{
+		StringBuffer buffer=null;
+		DataWriter writer=null;
+		
+		buffer=new StringBuffer();
+		for(byte b:raw)
+		{
+			buffer.append((char)b);
+		}
+		
+		writer=new DataWriter(buffer.toString());
+		
+		return writer;
+		
+	}
+	
+	private final class DataWriter implements StreamingOutput
+	{
+		private String data;		
+
+		public DataWriter(String data) {
+			this.data=data;
+		}
+
+		@Override
+		public void write(OutputStream os) throws IOException, WebApplicationException {
+			
+			os.write(data.getBytes());
+			os.close();
+		}
+		
+	}
+}
+
+url:
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/byte
+
+
+choose POST type request
+
+write the following in form header
+
+Content-Type text/plain
+
+write the following in form body
+
+Order-Product-Orange
+
+then click on send.
+ 
+output
+-----
+Order-Product-Orange
+
+4>MultivalueParam<K,V> requeststParam
+------------------------------------
+
+@Path("/order")
+public class OrderResource {
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/new/form")
+	public StreamingOutput newOrder(MultivaluedMap<String, String> requestParams)
+	{
+		StringBuffer buffer=null;
+		DataWriter writer=null;
+		
+		buffer=new StringBuffer();
+		for(String paramName:requestParams.keySet())
+		{
+			buffer.append(paramName+" : ");
+			List<String> paramValues=requestParams.get(paramName);
+			for(String paramValue:paramValues)
+			{
+				buffer.append(paramValue+" , ");
+			}
+		}
+		
+		writer=new DataWriter(buffer.toString());
+			
+		return writer;
+	}
+	private final class DataWriter implements StreamingOutput
+	{
+		private String data;		
+
+		public DataWriter(String data) {
+			this.data=data;
+		}
+
+		@Override
+		public void write(OutputStream os) throws IOException, WebApplicationException {
+			
+			os.write(data.getBytes());
+			os.close();
+		}
+		
+	}
+}
+
+url:
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/form
+write the following inside the form header
+
+Content-Type=application/x-www-form-urlencoded
+
+write the following in side the form body(form)
+
+order=Apple
+order=orange
+order=banana
+
+
+output:
+------
+order : Apple , orange , banana
+
+5>String body
+--------------
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/string
+
+choose post as http request
+
+write the following inside the form header
+
+Content-Type=text/plain
+
+write the following in side the form body(form)
+
+Product:Orange
+
+output:
+------
+Product:Orange
+
+
+6>char[] order(but it is not working now, we ll do it later, sir told)
+------------------
+
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/chars
+
+choose post as http request
+
+write the following inside the form header
+
+Content-Type=text/plain
+
+write the following in side the form body(form)
+
+Product:Orange
+
+output:
+------
+Product:Orange
+
+7>File fie
+------------
+
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/file
+
+choose post as hhtp request
+
+write the following inside the form header
+
+Content-Type=text/plain (or) Content-Type=multipart/form-data
+Add some text messsage to be send on body part of request message
+
+then choose one file as part of the payload of the file
+
+requested uri: http://localhost:8082/ContentHandlerWeb/resource/book-order/newBulk/file
+
+
+								Response Body
+						-------------------------------
+1>StreamingOutput
+-----------------
+we already worked with StreamingOutput, i ll write few points about here, why StreamingOutput used here, bt not now, ltr
+
+
+2>byte[]  
+----------
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/out/byte
+
+
+payload
+
+Product:Orange
+
+click on send.
+
+output
+-----
+Product:Orange
+
+3>String
+--------
+
+
+url:
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/out/string
+
+wrt the following in payload
+
+Product=Orange
+
+o/p
+---
+Product=Orange
+
+4> char[] (but it is not working now, we ll do it later, sir told)
+-----------
+
+
+url:
+---
+http://localhost:8082/ContentHandlerWeb/resource/order/new/out/chars
+
+post
+
+
+payload
+
+product=Apple 
+
+5>File
+------
+
+url
+----
+http://localhost:8082/ContentHandlerWeb/resource/order/new/out/file
+
+post request
+
+form header
+-----------
+Depends on MediaType
+
+Content-Type: text/plain
+(or)
+Content-Type=multipart/form-data
+
+form payload
+-------------
+Hi my name is Noorul Islam Siddique
+
+
+output
+------
+Hi my name is Noorul Islam Siddique
+
+after sending the request you have to go to corresponding file location and check 
+for following requested message printed in your product.txt file
+

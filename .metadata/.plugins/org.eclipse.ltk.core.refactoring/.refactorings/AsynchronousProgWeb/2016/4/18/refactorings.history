@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.apw.common.StockApplication&apos; to &apos;BSEExchangeApplication&apos;&#x0D;&#x0A;- Original project: &apos;AsynchronousProgWeb&apos;&#x0D;&#x0A;- Original element: &apos;com.apw.common.StockApplication&apos;&#x0D;&#x0A;- Renamed element: &apos;com.apw.common.BSEExchangeApplication&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;StockApplication&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.apw.common{StockApplication.java[StockApplication" matchStrategy="1" name="BSEExchangeApplication" qualified="false" references="true" similarDeclarations="false" stamp="1461700552579" textual="false" version="1.0"/>
+</session>

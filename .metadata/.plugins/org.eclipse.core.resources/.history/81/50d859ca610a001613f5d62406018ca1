@@ -1,0 +1,30 @@
+package com.ideaprovider.test;
+
+import com.ideaprovider.dto.Reciept;
+import com.ideaprovider.dto.Subscriber;
+import com.ideaprovider.invoker.IdeaProviderInvoker;
+
+public class IdeaProviderInvokerTest {
+	public static void main(String[] args) {
+		IdeaProviderInvoker invoker = null;
+		Subscriber subscriber = null;
+		Reciept reciept = null;
+
+		invoker = new IdeaProviderInvoker();
+		invoker.open();
+		subscriber = new Subscriber();
+		subscriber.setMobile("9968556321");
+		subscriber.setPlan("255-LIFETIME");
+		subscriber.setAmount(255f);
+
+		reciept = invoker.recharge(subscriber);
+		System.out.println("Reciept No: " + reciept.getRecieptNo());
+		System.out.println("Mobile: " + reciept.getMobile());
+		System.out.println("Balance: " + reciept.getBalance());
+		System.out.println("Status: " + reciept.getStatus());
+		
+		invoker.close();
+
+	}
+
+}

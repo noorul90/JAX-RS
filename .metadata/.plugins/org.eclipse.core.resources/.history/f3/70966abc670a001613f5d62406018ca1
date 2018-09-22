@@ -1,0 +1,46 @@
+package com.ideaprovider.invoker;
+
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.capi.common.Invoker;
+import com.ideaprovider.dto.Reciept;
+import com.ideaprovider.dto.Subscriber;
+import com.ideaprovider.providers.contextresolver.JAXBContextResolver;
+import com.ideaprovider.providers.reader.JAXBMessageBodyReader;
+import com.ideaprovider.providers.writer.JAXBMessageBodyWriter;
+
+public class IdeaProviderInvoker extends Invoker {
+	private final String IDEA_PROVIDER_ROOT_URI = "http://localhost:8082/JAXBCustomeContentHandler/rest/idea";
+
+	public Reciept recharge(Subscriber subscriber) {
+		WebTarget ideaTarget = null;
+		Reciept reciept = null;
+		Invocation invocation = null;
+		Response response = null;
+
+		ideaTarget = client.target(IDEA_PROVIDER_ROOT_URI).path("recharge");
+
+		ideaTarget.register(JAXBContextResolver.class);
+		ideaTarget.register(JAXBMessageBodyReader.class);
+		ideaTarget.register(JAXBMessageBodyWriter.class);
+
+		/*
+		 * response = ideaTarget.request().post( Entity.entity(subscriber,
+		 * MediaType.APPLICATION_XML));  //OR
+		 */
+
+		invocation = ideaTarget.request().accept(MediaType.APPLICATION_XML)
+				.buildPost(Entity.xml(subscriber));
+		response = invocation.invoke();
+
+		if (response.getStatus() == 200) {
+			reciept = response.readEntity(Reciept.class);
+		}
+		return reciept;
+	}
+
+}

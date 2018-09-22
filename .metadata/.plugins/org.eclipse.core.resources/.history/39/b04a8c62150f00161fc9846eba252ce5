@@ -1,0 +1,51 @@
+we have to add expires()/expires header as part of http 1.0 protocol
+
+but as part of http 1.1 expires()/expires header will be remove/deprecated and in place of
+expires header we use cacheControl()/cache control header
+
+
+
+       request      (recieve the request and redirected to resource)
+       
+CLIENT------------>CDN(content delivery network) SERVER----------------------------------->Restfull RESOURCE
+               
+                (it will take the response from RESORCE and store into local cache       (it will compute the response and send back to the client/CDN server
+                  till the expires/cacheControl header expires time and then send the      with expires heder or cacheControl header)
+                  response back to the client) 
+                ( for the next same request within the expires time CDN server check if
+                  the response available in the cache then it will never passes the request
+                  to resource rather it will send the response back from cache )
+                                                                                         
+
+as part of cacheControl header we can pass multiple value as part of response the following are
+---------------------------------------------------------------------------------------------------
+
+1.NoStore---->don't store the data into hardisk/physical disk rather keep the data into memory only when response return by resource
+
+2.NoCache----->client should never cache the data,it will always keep changing
+
+3.Private----->only client will be permit to cache the data ,intermediatery server/CDN server will not be permitted to cache the data
+
+4.maxAge------>how long client store the data into cache so that we can use the same rather we resending the request to the server
+
+4i.sMaxAge----->how long CDN server/intermediatery server has to cache the data insted of client
+
+5.mustRevalidate---->before using the data that are within the cache always go and check with server is the data has been modify or not.
+                     if it is not modify use it , if it is modify then revalidate it(means i will send latest data)
+6.NoTransform------->the original data/response has to store in the cache in the same way, don't transform the the data while storing
+
+these are the total 6 value that we can pass as part of cacheControl header
+
+Ex.
+    CacheControl cc = new CacheControl();
+    cc.setMaxAge(5000);--->in milliseconds
+    cc.setNoStore(true);
+    cc.setSMaxAge(7000);
+    .....
+    ....
+    .....
+    return Response.ok().cacheControl(cc).entity(....).build();
+
+
+
+

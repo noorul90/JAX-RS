@@ -1,0 +1,36 @@
+package com.cw.common;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+import com.cw.resource.OrderResource;
+
+@ApplicationPath("/rest")
+public class CacheApplication extends Application{
+	private Set<Class<?>> classes;
+	private Set<Object> singletons;
+	
+	public CacheApplication() {
+		classes = new HashSet<Class<?>>();
+		singletons = new HashSet<Object>();
+		
+		singletons.add(new OrderResource());
+	}
+	
+	@Override
+	public Set<Class<?>> getClasses() {
+		// TODO Auto-generated method stub
+		return super.getClasses();
+	}
+
+	@Override
+	public Set<Object> getSingletons() {
+		// TODO Auto-generated method stub
+		return super.getSingletons();
+	}
+	
+
+}

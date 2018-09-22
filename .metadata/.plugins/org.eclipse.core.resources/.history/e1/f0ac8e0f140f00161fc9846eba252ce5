@@ -1,0 +1,88 @@
+package com.cw.resource;
+
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.EntityTag;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+
+import com.cw.dto.Courier;
+import com.cw.dto.Status;
+
+@Path("/courier")
+public class CourierResource {
+	private Map<String, Status> courierStatusMap;
+
+	public CourierResource() {
+		courierStatusMap = new ConcurrentHashMap<String, Status>();
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("/bewBooking")
+	public Response bookParcel(Courier courier) {
+		Status status = null;
+		String awbno = null;
+
+		awbno = UUID.randomUUID().toString();
+		status = new Status();
+		status.setAwbNo(awbno);
+		status.setType("Express");
+		status.setStatus("Accepted");
+
+		courierStatusMap.put(awbno, status);
+		/* we will send the awbNo as response and with this awbNo we want to
+		   track the status of our courier by using below method/resource  */
+		return Response.ok().entity(awbno).build();
+		
+	}
+	
+
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("/status/{awbno}")
+	public Response getCourierStatus(@PathParam("awbno") String awbNo,
+			@Context Request request) {
+		CacheControl cacheControl = null;
+		Status status = null;
+		int etag = 0;
+		ResponseBuilder builder = null;
+		Response response = null;
+
+		if (courierStatusMap.containsKey(awbNo) == false) {
+			throw new WebApplicationException(Response.Status.BAD_REQUEST);
+		}
+		cacheControl = new CacheControl();
+		cacheControl.setMaxAge(70000);
+		cacheControl.setMustRevalidate(true);
+
+		status = courierStatusMap.get(awbNo);
+		etag = status.hashCode();
+
+		builder = request.evaluatePreconditions(new EntityTag(String
+				.valueOf(etag)));
+		if (builder != null) {
+			return builder.cacheControl(cacheControl).build();
+		}
+		response = Response.ok().tag(new EntityTag(String.valueOf(etag)))
+				.cacheControl(cacheControl).entity(status).build();
+
+		return response;
+
+	}
+
+}

@@ -1,0 +1,2 @@
+we have to add expires()/expires header as part of http 1.0 protocol
+but as part of http 1.1 expires()/expires header will be remove and in place of expires header we use cacheControl()/cache control header
